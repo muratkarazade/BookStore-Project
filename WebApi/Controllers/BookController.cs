@@ -31,12 +31,14 @@ namespace WebApi.AddControllers{
            }
        };
 
+        // GETIRME-ALMA ISLEMLERI
         [HttpGet]
         public List<Book> GetBooks(){
             var bookList = BookList.OrderBy(x=>x.Id).ToList<Book>();
             return bookList;
         }
 
+        // ID ILE GETİRME ISLEMI
         [HttpGet("{id}")]
         public Book GetById(int id)
         {
@@ -51,7 +53,7 @@ namespace WebApi.AddControllers{
         //     return book;
         // }
 
-        //POST ISLEMLERI
+        //EKLEME ISLEMLERI
         [HttpPost]
         public IActionResult AddBook([FromBody] Book newBook){
             var book = BookList.SingleOrDefault(x => x.Title == newBook.Title);
@@ -65,7 +67,7 @@ namespace WebApi.AddControllers{
 
         }
 
-        //PUT ISLEMLERI
+        //GUNCELLEME ISLEMLERI
         [HttpPut("{id}")]
         public IActionResult UpdateBook(int id, [FromBody] Book updateBook){
             var book = BookList.SingleOrDefault(x => x.Id == id);
@@ -80,5 +82,18 @@ namespace WebApi.AddControllers{
                 return Ok(); 
             }         
         }  
+
+        //SILME ISLEMLERI
+        [HttpDelete("{id}")]
+        public IActionResult DeleteBook(int id){
+            var book = BookList.SingleOrDefault(x => x.Id == id);
+            if(book is null){
+                return BadRequest();
+            }else
+            {
+               BookList.Remove(book);
+               return Ok(); 
+            }
+        }
     }
 }
