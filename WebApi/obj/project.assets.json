@@ -729,11 +729,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\levfi\\OneDrive\\Masaüstü\\pratikler\\BookStore\\WebApi\\WebApi.csproj",
+      "projectUniqueName": "C:\\Users\\levfi\\OneDrive\\Masaüstü\\Yazılım\\pratikler\\BookStore\\WebApi\\WebApi.csproj",
       "projectName": "WebApi",
-      "projectPath": "C:\\Users\\levfi\\OneDrive\\Masaüstü\\pratikler\\BookStore\\WebApi\\WebApi.csproj",
+      "projectPath": "C:\\Users\\levfi\\OneDrive\\Masaüstü\\Yazılım\\pratikler\\BookStore\\WebApi\\WebApi.csproj",
       "packagesPath": "C:\\Users\\levfi\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\levfi\\OneDrive\\Masaüstü\\pratikler\\BookStore\\WebApi\\obj\\",
+      "outputPath": "C:\\Users\\levfi\\OneDrive\\Masaüstü\\Yazılım\\pratikler\\BookStore\\WebApi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\levfi\\AppData\\Roaming\\NuGet\\NuGet.Config",

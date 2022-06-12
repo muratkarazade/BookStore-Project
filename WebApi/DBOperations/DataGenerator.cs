@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace WebApi.DBOperations
 {
+    //Uygulama ilk ayaga kalktiginda olusmasini istedigimiz veri setleri.
     public class DataGenerator //Database Initial method
     {
         public static void Initialize(IServiceProvider serviceProvider)

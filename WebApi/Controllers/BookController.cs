@@ -1,40 +1,24 @@
 using Microsoft.AspNetCore.Mvc;
+using WebApi.DBOperations;
 
 namespace WebApi.AddControllers{
 
     [ApiController]
     [Route("[controller]s")]
     public class BookController : ControllerBase{
-       private static List<Book> BookList = new List<Book>(){
-           new Book{
-               Id = 1 ,
-               Title = "Silmarillon",
-               GenreId = 1 , 
-               PageCount = 600,
-               PublishDate = new DateTime(1983,06,12)
-           },
+   
+        private readonly BookStoreDbContext _context;
 
-           new Book{
-               Id = 2 ,
-               Title = "Hobbit",
-               GenreId = 1 , 
-               PageCount = 400,
-               PublishDate = new DateTime(1998,05,03)
-           },
+        public BookController(BookStoreDbContext context)
+        {
+            _context = context;
+        }
 
-           new Book{
-               Id = 3 ,
-               Title = "LOTR",
-               GenreId = 1 ,    
-               PageCount = 550,
-               PublishDate = new DateTime(1996,08,30)
-           }
-       };
 
         // GETIRME-ALMA ISLEMLERI
         [HttpGet]
         public List<Book> GetBooks(){
-            var bookList = BookList.OrderBy(x=>x.Id).ToList<Book>();
+            var bookList = _context.Books.OrderBy(x=>x.Id).ToList<Book>();
             return bookList;
         }
 
@@ -42,7 +26,7 @@ namespace WebApi.AddControllers{
         [HttpGet("{id}")]
         public Book GetById(int id)
         {
-            var book = BookList.Where(book => book.Id == id).SingleOrDefault();
+            var book = _context.Books.Where(book => book.Id == id).SingleOrDefault();
             return book;
         }
 
@@ -56,13 +40,15 @@ namespace WebApi.AddControllers{
         //EKLEME ISLEMLERI
         [HttpPost]
         public IActionResult AddBook([FromBody] Book newBook){
-            var book = BookList.SingleOrDefault(x => x.Title == newBook.Title);
+            var book = _context.Books.SingleOrDefault(x => x.Title == newBook.Title);
 
         if(book is not null){
             return BadRequest();
         }else{
-            BookList.Add(newBook);
+            _context.Books.Add(newBook);
+            _context.SaveChanges();
             return Ok();
+            
         }
 
         }
@@ -70,7 +56,7 @@ namespace WebApi.AddControllers{
         //GUNCELLEME ISLEMLERI
         [HttpPut("{id}")]
         public IActionResult UpdateBook(int id, [FromBody] Book updateBook){
-            var book = BookList.SingleOrDefault(x => x.Id == id);
+            var book = _context.Books.SingleOrDefault(x => x.Id == id);
             if(book is  null){
                 return BadRequest();
             }else{
@@ -79,6 +65,7 @@ namespace WebApi.AddControllers{
                 book.PublishDate = updateBook.PublishDate != default ? updateBook.PublishDate : book.PublishDate;
                 book.Title = updateBook.Title != default ? updateBook.Title: book.Title;
 
+                _context.SaveChanges();
                 return Ok(); 
             }         
         }  
@@ -86,14 +73,53 @@ namespace WebApi.AddControllers{
         //SILME ISLEMLERI
         [HttpDelete("{id}")]
         public IActionResult DeleteBook(int id){
-            var book = BookList.SingleOrDefault(x => x.Id == id);
+            var book = _context.Books.SingleOrDefault(x => x.Id == id);
             if(book is null){
                 return BadRequest();
             }else
             {
-               BookList.Remove(book);
+               _context.Books.Remove(book);
+               _context.SaveChanges();
                return Ok(); 
             }
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+ //    private static List<Book> BookList = new List<Book>(){
+    //        new Book{
+    //            Id = 1 ,
+    //            Title = "Silmarillon",
+    //            GenreId = 1 , 
+    //            PageCount = 600,
+    //            PublishDate = new DateTime(1983,06,12)
+    //        },
+
+    //        new Book{
+    //            Id = 2 ,
+    //            Title = "Hobbit",
+    //            GenreId = 1 , 
+    //            PageCount = 400,
+    //            PublishDate = new DateTime(1998,05,03)
+    //        },
+
+    //        new Book{
+    //            Id = 3 ,
+    //            Title = "LOTR",
+    //            GenreId = 1 ,    
+    //            PageCount = 550,
+    //            PublishDate = new DateTime(1996,08,30)
+    //        }
+    //    };

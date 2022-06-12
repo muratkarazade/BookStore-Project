@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "VmzWQiJTVCQgJr3EqTSkO/HzSI/s9w/RlZ+e/9LrxQtkVVpvy4h6UZYqjetrBXUOgZ7qZakyfmWeL6i4CZ76YA==",
+  "dgSpecHash": "To1Ug5nCrICtfWVLTb7WQWQZcaHZ7hCWqfyuv+QK94guZ4U0qFwXBWyBvDSVHCcda/V8FMyOiADg0YBgAFt0JA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\levfi\\OneDrive\\Masaüstü\\pratikler\\BookStore\\WebApi\\WebApi.csproj",
+  "projectFilePath": "C:\\Users\\levfi\\OneDrive\\Masaüstü\\Yazılım\\pratikler\\BookStore\\WebApi\\WebApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\levfi\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.0-preview.4.22229.2\\microsoft.entityframeworkcore.7.0.0-preview.4.22229.2.nupkg.sha512",
     "C:\\Users\\levfi\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.0-preview.4.22229.2\\microsoft.entityframeworkcore.abstractions.7.0.0-preview.4.22229.2.nupkg.sha512",
